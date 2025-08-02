@@ -5,6 +5,8 @@ from pages.start_page import StartPage
 
 
 class Pages:
+    """Инициализация всех страниц. Удобно для использования в фикстурах.
+    """
     def __init__(self, driver: Chrome):
         self.driver = driver
         self.cart_page = CartPage(self.driver)
