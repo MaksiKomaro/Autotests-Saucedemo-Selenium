@@ -6,6 +6,11 @@ class ChromeDriver(Chrome):
     def __init__(self, options = None, service = None, keep_alive = True):
         if options is None:
             options = ChromeOptions()
+            
+            # Режим инкогнито, т.к. появляется менеджер паролей
+            options.add_argument("--incognito")
+            
+            # Отключение логирования в консоль
             options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
         super().__init__(options, service, keep_alive)

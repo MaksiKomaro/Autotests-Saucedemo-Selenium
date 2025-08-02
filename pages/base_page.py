@@ -24,7 +24,11 @@ class BasePage:
         return self.wait.until(EC.presence_of_element_located(el))
     
     def locate_elements(self, el: tuple) -> list[WebElement]:
-        return self.driver.find_elements(el)
+        self.wait.until(EC.presence_of_element_located(el))
+        return self.driver.find_elements(*el)
+    
+    def not_locate_element(self, el: tuple):
+        return self.wait.until_not(EC.presence_of_element_located(el))
     
     def is_clickable(self, el: tuple):
         return self.wait.until(EC.element_to_be_clickable(el))

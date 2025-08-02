@@ -8,10 +8,12 @@ def sp(pages) -> StartPage:
 
 
 def test_title(sp):
-    """Тест заголовка вкладки"""
+    """Тест заголовка вкладки
+    """
     assert sp.get_title == sp.TITLE
 def test_header_text(sp):
-    """Тест заголовка на странице"""
+    """Тест заголовка на странице
+    """
     assert sp.get_text(sp.HEADER) == sp.HEADER_TEXT
 
 
@@ -27,7 +29,8 @@ def test_header_text(sp):
         
 )
 def test_check_start_page_elements(sp, el):
-    """Тест на наличие на сранице элементов"""
+    """Тест на наличие на сранице элементов
+    """
     assert sp.locate_element(el)
 
 
@@ -41,5 +44,6 @@ def test_check_start_page_elements(sp, el):
         
 )
 def test_clickable_start_page_elements(sp, el):
-    """Тест на кликабельность элементов"""
+    """Тест на кликабельность элементов
+    """
     assert sp.is_clickable(el)
