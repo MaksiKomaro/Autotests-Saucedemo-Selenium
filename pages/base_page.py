@@ -1,4 +1,5 @@
 from selenium.webdriver import Chrome
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -22,7 +23,13 @@ class BasePage:
     def locate_element(self, el: tuple):
         return self.wait.until(EC.presence_of_element_located(el))
     
-    def clear_field(self, el):
+    def locate_elements(self, el: tuple) -> list[WebElement]:
+        return self.driver.find_elements(el)
+    
+    def is_clickable(self, el: tuple):
+        return self.wait.until(EC.element_to_be_clickable(el))
+    
+    def clear_text(self, el):
         self.locate_element(el).clear()
 
     def click_element(self, el):
@@ -32,4 +39,6 @@ class BasePage:
         return self.locate_element(el).text
     
     def send_text(self, el, text):
-        self.locate_element(el).send_keys(text)
+        e = self.locate_element(el)
+        e.clear()
+        e.send_keys(text)
