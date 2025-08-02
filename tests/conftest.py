@@ -36,7 +36,6 @@ def pytest_runtest_makereport(item: Item, call: CallInfo):
     """
     y: Result = yield
     rep: TestReport = y.get_result()
-    #if rep.failed and rep.when == 'call':
     setattr(item, 'rep_' + rep.when, rep)
     setattr(item, 'func_name', item.nodeid.split('::')[1])
 
