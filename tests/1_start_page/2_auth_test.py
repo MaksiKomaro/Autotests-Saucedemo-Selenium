@@ -1,4 +1,4 @@
-from time import sleep
+import allure
 import pytest
 from pages.start_page import StartPage
 from pages.main_page import MainPage
@@ -12,6 +12,12 @@ def sp(pages) -> StartPage:
 def mp(pages) -> MainPage:
     return pages.main_page
 
+
+@allure.title('Стартовая страница')
+@allure.description('Тест проверки некорректных сценариев авторизации')
+@allure.tag("Selenium")
+@allure.severity(allure.severity_level.NORMAL)
+@allure.label("owner", "Komarov Maksim")
 @pytest.mark.parametrize(
         'usr, pswrd, error_text', [
             ('', '', StartPage.NO_USERNAME_TEXT),
@@ -29,6 +35,12 @@ def test_negative_credentials(sp, usr, pswrd, error_text):
     sp.click_element(sp.LOGIN_BTN)
     assert sp.get_text(sp.ERR_TEXTFIELD) == error_text
 
+
+@allure.title('Стартовая страница')
+@allure.description('Тест проверки корректного сценария авторизации')
+@allure.tag("Selenium")
+@allure.severity(allure.severity_level.CRITICAL)
+@allure.label("owner", "Komarov Maksim")
 def test_positive_auth(sp, mp):
     """Тест на корректну. авторизацию standart_user
     """
