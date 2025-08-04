@@ -39,7 +39,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests and generate Allure results
-        run: python -m pytest --alluredir=alluredir tests
+        run: python -m pytest --alluredir=alluredir tests/
+        env:
+          GITHUB_ACTIONS: 'true'
 
       - name: Install Allure CLI
         run: |
