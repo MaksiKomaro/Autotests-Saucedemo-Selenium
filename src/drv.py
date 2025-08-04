@@ -1,5 +1,7 @@
 import os
 from selenium.webdriver import Chrome, ChromeOptions
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class ChromeDriver(Chrome):
@@ -17,6 +19,9 @@ class ChromeDriver(Chrome):
 
             if os.getenv('GITHUB_ACTIONS') == 'true':
                 options.add_argument("--headless=new")
+
+        if service is None:
+            service = Service(ChromeDriverManager().install())
 
         super().__init__(options, service, keep_alive)
         self.implicitly_wait(0.5)
