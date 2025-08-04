@@ -13,12 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           check-latest: true
+      
+      - name: Install Chrome browser
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
 
-      - run: |
+      - name: Install requirements.txt
+        run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
