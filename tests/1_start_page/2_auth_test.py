@@ -22,7 +22,7 @@ def mp(pages) -> MainPage:
         'usr, pswrd, error_text', [
             ('', '', StartPage.NO_USERNAME_TEXT),
             ('maks', '', StartPage.NO_PSWRD_TEXT),
-            ('maks', '1234', StartPage.WRONG_CREDS),
+            ('maks', '1234', StartPage.WRONG_CREDS_TEXT),
             
         ],
         ids=['no_creds', 'no_password', 'wrong_creds']
